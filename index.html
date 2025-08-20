@@ -1,0 +1,224 @@
+<!-- ========= FICHIERS DU PROJET =========
+index.html
+styles.css
+script.js
+======================================== -->
+
+<!-- ============== index.html ============== -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Élan Bigourdan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="container nav-wrap">
+      <a class="logo" href="#accueil">Élan Bigourdan</a>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#mission">Notre mission</a></li>
+        <li><a href="#chiffres">Nos chiffres</a></li>
+        <li><a href="#partenaires">Nos partenaires</a></li>
+        <li><a href="#actus">Actualités</a></li>
+        <li><a href="#lives">Nos lives</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="accueil" class="hero" role="banner">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>75 000 membres mobilisés pour dynamiser les Hautes‑Pyrénées</h1>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.facebook.com/groups/2529065037389921" target="_blank"
+          rel="noopener">Rejoindre le groupe Facebook 65</a>
+        <a class="btn btn-secondary" href="#partenaires">Commander la Carte à deux balles</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION : NOTRE MISSION (empilée) -->
+  <section id="mission" class="section section-mission">
+    <div class="container">
+      <h2>Notre mission</h2>
+      <div class="mission-grid">
+        <article class="card mission-item">
+          <div class="icon">💶</div>
+          <h3>Redonner du pouvoir d’achat local</h3>
+          <p>Des initiatives concrètes pour soutenir les foyers et la vie de quartier.</p>
+        </article>
+        <article class="card mission-item">
+          <div class="icon">🏬</div>
+          <h3>Soutenir les commerces de proximité</h3>
+          <p>Visibilité, trafic et avantages via la Carte à deux balles.</p>
+        </article>
+        <article class="card mission-item">
+          <div class="icon">🤝</div>
+          <h3>Créer du lien habitants ↔ associations</h3>
+          <p>Des projets fédérateurs pour tisser une communauté active.</p>
+        </article>
+        <article class="card mission-item">
+          <div class="icon">🎪</div>
+          <h3>Animer le territoire</h3>
+          <p>Événements, collectes et actions solidaires toute l’année.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : CHIFFRES CLÉS (empilée, dessous) -->
+  <section id="chiffres" class="section section-chiffres">
+    <div class="container">
+      <h2>Nos chiffres clés</h2>
+      <div class="stats-grid">
+        <div class="stat"><strong>85 545</strong><span>membres</span></div>
+        <div class="stat"><strong>100</strong><span>commerçants adhérents</span></div>
+        <div class="stat"><strong>25</strong><span>actions réalisées</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : ACTUALITÉS -->
+  <section id="actus" class="section section-actus">
+    <div class="container">
+      <h2>Actualités & événements</h2>
+      <div class="news-grid">
+        <article class="card news">
+          <div class="thumb" aria-label="Collecte de cadeaux"></div>
+          <div class="news-body">
+            <p class="meta">16 décembre 2023</p>
+            <h3>Collecte de cadeaux solidaire</h3>
+          </div>
+        </article>
+        <article class="card news">
+          <div class="thumb" aria-label="Job dating"></div>
+          <div class="news-body">
+            <p class="meta">8 octobre 2023</p>
+            <h3>Job dating au Parc des Expositions</h3>
+          </div>
+        </article>
+        <article class="card news">
+          <div class="thumb" aria-label="Live vidéo"></div>
+          <div class="news-body">
+            <p class="meta">23 juin 2023</p>
+            <h3>Live vidéo : bilan à mi‑année</h3>
+          </div>
+        </article>
+      </div>
+      <div class="section-cta">
+        <a class="btn btn-link" href="#">Voir toutes les actualités</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : PARTENAIRES -->
+  <section id="partenaires" class="section section-partners">
+    <div class="container">
+      <h2>Nos partenaires</h2>
+      <div class="logos-grid">
+        <a class="logo-item" href="#" aria-label="Partenaire 1"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 2"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 3"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 4"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 5"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 6"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 7"></a>
+        <a class="logo-item" href="#" aria-label="Partenaire 8"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : LIVES -->
+  <section id="lives" class="section section-lives">
+    <div class="container">
+      <h2>Nos lives</h2>
+      <div class="lives-grid">
+        <article class="card live">
+          <div class="thumb"><span class="play">▶</span></div>
+          <h3>Focus commerces</h3>
+        </article>
+        <article class="card live">
+          <div class="thumb"><span class="play">▶</span></div>
+          <h3>Actions solidaires</h3>
+        </article>
+        <article class="card live">
+          <div class="thumb"><span class="play">▶</span></div>
+          <h3>Bilan trimestriel</h3>
+        </article>
+      </div>
+      <div class="section-cta">
+        <a class="btn btn-link" href="#">Voir tous les lives</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : TÉMOIGNAGES -->
+  <section id="temoignages" class="section section-testimonials">
+    <div class="container">
+      <h2>Ils témoignent</h2>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial">« En Bigorre, on prouve qu’ensemble, on fait bouger le territoire. »<cite>—
+            Mumu</cite></blockquote>
+        <blockquote class="testimonial">« Fier de participer à une aventure solidaire qui aide nos commerçants. »<cite>—
+            Thomas</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION : CONTACT (sans formulaire) -->
+  <section id="contact" class="section section-contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a class="btn btn-whatsapp" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 Écrire sur
+          WhatsApp</a>
+        <a class="btn btn-secondary" href="mailto:contact@elanbigourdan.com">✉️ Envoyer un e‑mail</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Élan Bigourdan</div>
+        <p class="footer-slogan">Dynamiser l’économie locale</p>
+      </div>
+      <div class="footer-col">
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="#mission">Notre mission</a></li>
+          <li><a href="#chiffres">Nos chiffres</a></li>
+          <li><a href="#partenaires">Nos partenaires</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a class="whatsapp-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="mailto:contact@elanbigourdan.com">contact@elanbigourdan.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Avec vous, pour faire vivre l’économie locale</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
