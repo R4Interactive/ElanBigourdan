@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nos partenaires — Élan Bigourdan</title>
+
+    <!-- Fonts + Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/nos_partenaires_styles.css" />
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="container nav-wrap">
+            <a class="logo" href="index.html#accueil">Élan Bigourdan</a>
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html#mission">Notre mission</a></li>
+                <li><a href="index.html#chiffres">Nos chiffres</a></li>
+                <li><a class="is-active" href="nos_partenaires.html">Nos partenaires</a></li>
+                <li><a href="index.html#actus">Actualités</a></li>
+                <li><a href="index.html#lives">Nos lives</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SUB-HERO -->
+    <header class="sub-hero">
+        <div class="container sub-hero-inner">
+            <div>
+                <p class="eyebrow">Réseau local</p>
+                <h1>Nos partenaires</h1>
+                <p class="lead">Tous les commerçants et acteurs qui soutiennent la Carte à deux balles et l’économie de
+                    proximité.</p>
+            </div>
+            <div class="sub-hero-cta">
+                <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/33600000000">Devenir
+                    partenaire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- OUTILS DE RECHERCHE / FILTRES -->
+    <section class="section">
+        <div class="container">
+            <div class="partners-toolbar">
+                <div class="partners-count"><strong id="partnersCount">0</strong> partenaires</div>
+
+                <form class="filters" id="partnersFilters" autocomplete="off">
+                    <input type="search" id="fSearch" class="input" placeholder="Rechercher un commerce, un mot-clé…" />
+
+                    <select id="fCategory" class="select">
+                        <option value="">Toutes catégories</option>
+                        <option>Alimentaire</option>
+                        <option>Restauration</option>
+                        <option>Mode & Accessoires</option>
+                        <option>Beauté & Bien-être</option>
+                        <option>Services</option>
+                        <option>Loisirs</option>
+                    </select>
+
+                    <select id="fCity" class="select">
+                        <option value="">Toutes villes</option>
+                        <option>Tarbes</option>
+                        <option>Lourdes</option>
+                        <option>Bagnères-de-Bigorre</option>
+                        <option>Vic-en-Bigorre</option>
+                        <option>Argelès-Gazost</option>
+                    </select>
+
+                    <label class="check">
+                        <input type="checkbox" id="fAdvantage" />
+                        <span>Avantage « Carte à deux balles »</span>
+                    </label>
+
+                    <a href="#" id="fReset" class="btn btn-secondary btn-reset">Réinitialiser</a>
+                </form>
+            </div>
+
+            <!-- GRILLE PARTENAIRES -->
+            <div class="partners-grid" id="partnersGrid">
+                <!-- Exemple 1 -->
+                <article class="partner-card" data-name="La Boulangerie des Halles" data-category="Alimentaire"
+                    data-city="Tarbes" data-tags="pain,local,artisan" data-advantage="-10%">
+                    <div class="partner-logo">
+                        <img src="assets/logos/logo-placeholder.svg" alt="La Boulangerie des Halles">
+                    </div>
+                    <div class="partner-body">
+                        <h3>La Boulangerie des Halles</h3>
+                        <p>Boulangerie artisanale — levain naturel & farines locales.</p>
+                        <ul class="partner-meta">
+                            <li>📍 Tarbes</li>
+                            <li>🏷 Alimentaire</li>
+                        </ul>
+                        <div class="partner-tags">
+                            <span class="badge advantage">-10% avec la Carte</span>
+                            <span class="tag">local</span><span class="tag">artisan</span>
+                        </div>
+                        <div class="partner-actions">
+                            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+                            <a class="icon-btn" aria-label="Facebook" href="#" target="_blank" rel="noopener">f</a>
+                            <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+                            <a class="icon-btn" aria-label="Google Maps" href="#" target="_blank" rel="noopener">map</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemple 2 -->
+                <article class="partner-card" data-name="Café du Marché" data-category="Restauration"
+                    data-city="Lourdes" data-tags="café,terrasse,brunch" data-advantage="">
+                    <div class="partner-logo">
+                        <img src="assets/logos/logo-placeholder.svg" alt="Café du Marché">
+                    </div>
+                    <div class="partner-body">
+                        <h3>Café du Marché</h3>
+                        <p>Brasserie conviviale — cuisine maison & terrasse ensoleillée.</p>
+                        <ul class="partner-meta">
+                            <li>📍 Lourdes</li>
+                            <li>🏷 Restauration</li>
+                        </ul>
+                        <div class="partner-tags">
+                            <span class="badge advantage">-10% avec la Carte</span>
+                            <span class="tag">brunch</span><span class="tag">terrasse</span>
+                        </div>
+                        <div class="partner-actions">
+                            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+                            <a class="icon-btn" aria-label="Facebook" href="#" target="_blank" rel="noopener">f</a>
+                            <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemple 3 -->
+                <article class="partner-card" data-name="Atelier des Pyrénées" data-category="Mode & Accessoires"
+                    data-city="Bagnères-de-Bigorre" data-tags="créateurs,sacs,upcycling" data-advantage="-15%">
+                    <div class="partner-logo">
+                        <img src="assets/logos/logo-placeholder.svg" alt="Atelier des Pyrénées">
+                    </div>
+                    <div class="partner-body">
+                        <h3>Atelier des Pyrénées</h3>
+                        <p>Créations durables — maroquinerie & accessoires upcyclés.</p>
+                        <ul class="partner-meta">
+                            <li>📍 Bagnères-de-Bigorre</li>
+                            <li>🏷 Mode & Accessoires</li>
+                        </ul>
+                        <div class="partner-tags">
+                            <span class="badge advantage">-15% avec la Carte</span>
+                            <span class="tag">créateurs</span><span class="tag">upcycling</span>
+                        </div>
+                        <div class="partner-actions">
+                            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+                            <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Duplique autant que nécessaire -->
+            </div>
+
+            <div class="section-cta">
+                <a class="btn btn-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">Proposer un
+                    nouveau partenaire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">Élan Bigourdan</div>
+                <p class="footer-slogan">Dynamiser l’économie locale</p>
+            </div>
+            <div class="footer-col">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="index.html#mission">Notre mission</a></li>
+                    <li><a href="index.html#chiffres">Nos chiffres</a></li>
+                    <li><a href="nos_partenaires.html">Nos partenaires</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a class="whatsapp-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+                <a href="mailto:contact@elanbigourdan.com">contact@elanbigourdan.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Avec vous, pour faire vivre l’économie locale</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../JAVASCRIPT/nos_partenaires_script.js"></script>
+</body>
+
+</html>

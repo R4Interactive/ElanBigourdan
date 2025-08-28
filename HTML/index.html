@@ -1,184 +1,198 @@
-<!-- ============== index.html ============== -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Élan Bigourdan</title>
+  <title>Nos partenaires — Élan Bigourdan</title>
+
+  <!-- Fonts + Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/styles.css" />
+  <link rel="stylesheet" href="../CSS/nos_partenaires_styles.css" />
+
+  <!-- Leaflet (OpenStreetMap) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="#accueil">Élan Bigourdan</a>
+      <a class="logo" href="index.html#accueil">Élan Bigourdan</a>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#actus">Actualités</a></li>
-        <li><a href="#lives">Nos lives</a></li>
-        <li><a href="#partenaires">Nos partenaires</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#mission">Notre mission</a></li>
+        <li><a href="index.html#chiffres">Nos chiffres</a></li>
+        <li><a class="is-active" href="nos_partenaires.html">Nos partenaires</a></li>
+        <li><a href="index.html#actus">Actualités</a></li>
+        <li><a href="index.html#lives">Nos lives</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="accueil" class="hero" role="banner">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <h1>75 000 membres mobilisés pour dynamiser les Hautes‑Pyrénées</h1>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://www.facebook.com/groups/2529065037389921" target="_blank"
-          rel="noopener">Rejoindre le groupe Facebook 65</a>
-        <a class="btn btn-secondary" href="#contact">Commander la Carte à deux balles</a>
+  <!-- SUB-HERO -->
+  <header class="sub-hero">
+    <div class="container sub-hero-inner">
+      <div>
+        <p class="eyebrow">Réseau local</p>
+        <h1>Nos partenaires</h1>
+        <p class="lead">Tous les commerçants et acteurs qui soutiennent la Carte à deux balles et l’économie de
+          proximité.</p>
+      </div>
+      <div class="sub-hero-cta">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/33600000000">Devenir
+          partenaire</a>
       </div>
     </div>
   </header>
 
-  <!-- SECTION : NOTRE MISSION (empilée) -->
-  <section id="mission" class="section section-mission">
+  <!-- OUTILS -->
+  <section class="section">
     <div class="container">
-      <h2>Notre mission</h2>
-      <div class="mission-grid">
-        <article class="card mission-item">
-          <div class="icon">💶</div>
-          <h3>Redonner du pouvoir d’achat local</h3>
-          <p>Des initiatives concrètes pour soutenir les foyers et la vie de quartier.</p>
-        </article>
-        <article class="card mission-item">
-          <div class="icon">🏬</div>
-          <h3>Soutenir les commerces de proximité</h3>
-          <p>Visibilité, trafic et avantages via la Carte à deux balles.</p>
-        </article>
-        <article class="card mission-item">
-          <div class="icon">🤝</div>
-          <h3>Créer du lien habitants ↔ associations</h3>
-          <p>Des projets fédérateurs pour tisser une communauté active.</p>
-        </article>
-        <article class="card mission-item">
-          <div class="icon">🎪</div>
-          <h3>Animer le territoire</h3>
-          <p>Événements, collectes et actions solidaires toute l’année.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+      <div class="partners-toolbar">
+        <div class="partners-count"><strong id="partnersCount">0</strong> partenaires</div>
 
-  <!-- SECTION : CHIFFRES CLÉS (empilée, dessous) -->
-  <section id="chiffres" class="section section-chiffres">
-    <div class="container">
-      <h2>Nos chiffres clés</h2>
-      <div class="stats-grid">
-        <div class="stat"><strong>85 545</strong><span>membres</span></div>
-        <div class="stat"><strong>100</strong><span>commerçants adhérents</span></div>
-        <div class="stat"><strong>25</strong><span>actions réalisées</span></div>
+        <div class="view-toggle" role="tablist" aria-label="Mode d’affichage">
+          <button class="chip is-active" data-view="list" role="tab" aria-selected="true">Liste</button>
+          <button class="chip" data-view="map" role="tab" aria-selected="false">Carte</button>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- SECTION : ACTUALITÉS -->
-  <section id="actus" class="section section-actus">
-    <div class="container">
-      <h2>Actualités & événements</h2>
-      <div class="news-grid">
-        <article class="card news">
-          <div class="thumb" aria-label="Collecte de cadeaux"></div>
-          <div class="news-body">
-            <p class="meta">16 décembre 2023</p>
-            <h3>Collecte de cadeaux solidaire</h3>
+      <form class="filters" id="partnersFilters" autocomplete="off">
+        <input type="search" id="fSearch" class="input" placeholder="Rechercher un commerce, un mot-clé…" />
+
+        <select id="fCategory" class="select">
+          <option value="">Toutes catégories</option>
+          <option>Alimentaire</option>
+          <option>Restauration</option>
+          <option>Mode & Accessoires</option>
+          <option>Beauté & Bien-être</option>
+          <option>Services</option>
+          <option>Loisirs</option>
+        </select>
+
+        <select id="fCity" class="select">
+          <option value="">Toutes villes</option>
+          <option>Tarbes</option>
+          <option>Lourdes</option>
+          <option>Bagnères-de-Bigorre</option>
+          <option>Vic-en-Bigorre</option>
+          <option>Argelès-Gazost</option>
+        </select>
+
+        <label class="check">
+          <input type="checkbox" id="fAdvantage" />
+          <span>Avantage « Carte à deux balles »</span>
+        </label>
+
+        <div class="sorter">
+          <label>
+            <span class="sr-only">Trier par</span>
+            <select id="sBy" class="select">
+              <option value="name">Nom</option>
+              <option value="city">Ville</option>
+              <option value="category">Catégorie</option>
+            </select>
+          </label>
+          <label>
+            <span class="sr-only">Ordre</span>
+            <select id="sOrder" class="select">
+              <option value="asc">A → Z</option>
+              <option value="desc">Z → A</option>
+            </select>
+          </label>
+        </div>
+
+        <a href="#" id="fReset" class="btn btn-secondary btn-reset">Réinitialiser</a>
+      </form>
+
+      <!-- LISTE -->
+      <div class="partners-grid" id="partnersGrid">
+        <!-- Card 1 -->
+        <article class="partner-card" data-name="La Boulangerie des Halles" data-category="Alimentaire"
+          data-city="Tarbes" data-tags="pain,local,artisan" data-advantage="-10%" data-lat="43.2321" data-lng="-0.0733">
+          <div class="partner-logo">
+            <span class="ribbon">-10% carte</span>
+            <img src="assets/logos/logo-placeholder.svg" alt="La Boulangerie des Halles">
+          </div>
+          <div class="partner-body">
+            <h3>La Boulangerie des Halles</h3>
+            <p>Boulangerie artisanale — levain naturel & farines locales.</p>
+            <ul class="partner-meta">
+              <li>📍 Tarbes</li>
+              <li>🏷 Alimentaire</li>
+            </ul>
+            <div class="partner-tags"><span class="tag">local</span><span class="tag">artisan</span></div>
+            <div class="partner-actions">
+              <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+              <a class="icon-btn" aria-label="Facebook" href="#" target="_blank" rel="noopener">f</a>
+              <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+              <a class="icon-btn" aria-label="Google Maps" href="#" target="_blank" rel="noopener">map</a>
+            </div>
           </div>
         </article>
-        <article class="card news">
-          <div class="thumb" aria-label="Job dating"></div>
-          <div class="news-body">
-            <p class="meta">8 octobre 2023</p>
-            <h3>Job dating au Parc des Expositions</h3>
+
+        <!-- Card 2 -->
+        <article class="partner-card" data-name="Café du Marché" data-category="Restauration" data-city="Lourdes"
+          data-tags="café,terrasse,brunch" data-advantage="" data-lat="43.0950" data-lng="-0.0463">
+          <div class="partner-logo">
+            <img src="assets/logos/logo-placeholder.svg" alt="Café du Marché">
+          </div>
+          <div class="partner-body">
+            <h3>Café du Marché</h3>
+            <p>Brasserie conviviale — cuisine maison & terrasse ensoleillée.</p>
+            <ul class="partner-meta">
+              <li>📍 Lourdes</li>
+              <li>🏷 Restauration</li>
+            </ul>
+            <div class="partner-tags"><span class="tag">brunch</span><span class="tag">terrasse</span></div>
+            <div class="partner-actions">
+              <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+              <a class="icon-btn" aria-label="Facebook" href="#" target="_blank" rel="noopener">f</a>
+              <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+            </div>
           </div>
         </article>
-        <article class="card news">
-          <div class="thumb" aria-label="Live vidéo"></div>
-          <div class="news-body">
-            <p class="meta">23 juin 2023</p>
-            <h3>Live vidéo : bilan à mi‑année</h3>
+
+        <!-- Card 3 -->
+        <article class="partner-card" data-name="Atelier des Pyrénées" data-category="Mode & Accessoires"
+          data-city="Bagnères-de-Bigorre" data-tags="créateurs,sacs,upcycling" data-advantage="-15%" data-lat="43.0621"
+          data-lng="0.1573">
+          <div class="partner-logo">
+            <span class="ribbon">-15% carte</span>
+            <img src="assets/logos/logo-placeholder.svg" alt="Atelier des Pyrénées">
+          </div>
+          <div class="partner-body">
+            <h3>Atelier des Pyrénées</h3>
+            <p>Créations durables — maroquinerie & accessoires upcyclés.</p>
+            <ul class="partner-meta">
+              <li>📍 Bagnères-de-Bigorre</li>
+              <li>🏷 Mode & Accessoires</li>
+            </ul>
+            <div class="partner-tags"><span class="tag">créateurs</span><span class="tag">upcycling</span></div>
+            <div class="partner-actions">
+              <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Site web</a>
+              <a class="icon-btn" aria-label="Instagram" href="#" target="_blank" rel="noopener">ig</a>
+            </div>
           </div>
         </article>
+
+        <!-- Duplique autant que nécessaire -->
       </div>
+
+      <!-- CARTE -->
+      <div id="partnersMap" class="partners-map" hidden></div>
+
       <div class="section-cta">
-        <a class="btn btn-link" href="#">Voir toutes les actualités</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION : PARTENAIRES -->
-  <section id="partenaires" class="section section-partners">
-    <div class="container">
-      <h2>Nos partenaires</h2>
-      <div class="logos-grid">
-        <a class="logo-item" href="#" aria-label="Partenaire 1"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 2"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 3"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 4"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 5"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 6"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 7"></a>
-        <a class="logo-item" href="#" aria-label="Partenaire 8"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION : LIVES -->
-  <section id="lives" class="section section-lives">
-    <div class="container">
-      <h2>Nos lives</h2>
-      <div class="lives-grid">
-        <article class="card live">
-          <div class="thumb"><span class="play">▶</span></div>
-          <h3>Focus commerces</h3>
-        </article>
-        <article class="card live">
-          <div class="thumb"><span class="play">▶</span></div>
-          <h3>Actions solidaires</h3>
-        </article>
-        <article class="card live">
-          <div class="thumb"><span class="play">▶</span></div>
-          <h3>Bilan trimestriel</h3>
-        </article>
-      </div>
-      <div class="section-cta">
-        <a class="btn btn-link" href="#">Voir tous les lives</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION : TÉMOIGNAGES -->
-  <section id="temoignages" class="section section-testimonials">
-    <div class="container">
-      <h2>Ils témoignent</h2>
-      <div class="testimonials-grid">
-        <blockquote class="testimonial">« En Bigorre, on prouve qu’ensemble, on fait bouger le territoire. »<cite>—
-            Mumu</cite></blockquote>
-        <blockquote class="testimonial">« Fier de participer à une aventure solidaire qui aide nos commerçants. »<cite>—
-            Thomas</cite></blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION : CONTACT (sans formulaire) -->
-  <section id="contact" class="section section-contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="contact-links">
-        <a class="btn btn-whatsapp" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 Écrire sur
-          WhatsApp</a>
-        <a class="btn btn-secondary" href="mailto:elanbigourdan65@gmail.com">✉️ Envoyer un e‑mail</a>
+        <a class="btn btn-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">Proposer un nouveau
+          partenaire</a>
       </div>
     </div>
   </section>
@@ -193,16 +207,16 @@
       <div class="footer-col">
         <h3>Liens utiles</h3>
         <ul>
-          <li><a href="#mission">Notre mission</a></li>
-          <li><a href="#chiffres">Nos chiffres</a></li>
-          <li><a href="#partenaires">Nos partenaires</a></li>
+          <li><a href="index.html#mission">Notre mission</a></li>
+          <li><a href="index.html#chiffres">Nos chiffres</a></li>
+          <li><a href="nos_partenaires.html">Nos partenaires</a></li>
           <li><a href="#">Mentions légales</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h3>Contact</h3>
         <a class="whatsapp-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
-        <a href="mailto:elanbigourdan65@gmail.com">elanbigourdan65@gmail.com</a>
+        <a href="mailto:contact@elanbigourdan.com">contact@elanbigourdan.com</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -210,7 +224,12 @@
     </div>
   </footer>
 
-  <script src="../JAVASCRIPT/script.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- App -->
+  <script src="../JAVASCRIPT/nos_partenaires_script.js"></script>
 </body>
 
 </html>
