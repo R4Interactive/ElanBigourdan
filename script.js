@@ -292,4 +292,71 @@
 			document.body.style.overflow = 'hidden';
 		});
 	});
+	// ============ Partenaires aléatoires en home (JSON) ============
+	(function homePartnersRandom() {
+		const grid = document.querySelector('#partenaires .logos-grid');
+		if (!grid) return;
+
+		const JSON_URL = 'assets/partners.json';
+
+		// Shuffle Fisher-Yates (stable et performant)
+		function shuffle(arr) {
+			const a = arr.slice();
+			for (let i = a.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[a[i], a[j]] = [a[j], a[i]];
+			}
+			return a;
+		}
+
+		function render(partners) {
+			// Vide la grille (si des placeholders existent)
+			grid.innerHTML = '';
+			// Crée chaque tuile logo
+			partners.forEach((p) => {
+				const a = document.createElement('a');
+				a.className = 'logo-item';
+				a.href = p.link || 'nos_partenaires.html';
+				a.target = a.href.startsWith('http') ? '_blank' : '';
+				a.rel = a.target === '_blank' ? 'noopener' : '';
+				a.setAttribute('aria-label', p.name || 'Partenaire');
+
+				const img = document.createElement('img');
+				img.src = p.logo;
+				img.alt = p.name || 'Logo partenaire';
+				img.loading = 'lazy';
+				img.decoding = 'async';
+				img.style.maxHeight = '70%';
+				img.style.maxWidth = '80%';
+				img.style.margin = '0 auto';
+				img.style.display = 'block';
+
+				a.appendChild(img);
+				grid.appendChild(a);
+			});
+		}
+
+		async function init() {
+			try {
+				const res = await fetch(JSON_URL, { cache: 'no-store' });
+				if (!res.ok) throw new Error('HTTP ' + res.status);
+				const data = await res.json();
+				if (!Array.isArray(data) || data.length === 0) return;
+				render(shuffle(data));
+			} catch (err) {
+				console.warn(
+					'[homePartnersRandom] Échec du chargement JSON :',
+					err
+				);
+				// Fallback : on conserve les placeholders existants (aucune erreur bloquante)
+			}
+		}
+
+		// Lance au DOM ready (si ton script est en defer, c’est déjà OK)
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init);
+		} else {
+			init();
+		}
+	})();
 })();
