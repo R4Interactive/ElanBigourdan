@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Actualités & Agenda — Élan Bigourdan</title>
+    <meta name="description"
+        content="Agenda local : salons, foires, concerts, animations de ville et événements des commerçants du département." />
+
+    <!-- Police -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles globaux -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Styles page Actualités -->
+    <link rel="stylesheet" href="actualite_styles.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar" aria-label="Navigation principale">
+        <div class="container nav-wrap">
+            <a class="logo" href="index.html">Élan Bigourdan</a>
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu" class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#actus" aria-current="page">Actualités</a></li>
+                <li><a href="index.html#lives">Nos lives</a></li>
+                <li><a href="nos_partenaires.html">Nos partenaires</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="agenda-hero" role="banner">
+        <div class="container">
+            <p class="eyebrow">VIE LOCALE</p>
+            <h1>Actualités & Agenda local</h1>
+            <p class="lead">Concerts, salons, animations, feux d’artifice et événements chez les commerçants — tout près
+                de chez vous.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#agenda">Découvrir les événements</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FILTRES -->
+    <section class="section" aria-labelledby="filters-title">
+        <div class="container">
+            <h2 id="filters-title" class="sr-only">Filtres de recherche</h2>
+
+            <div class="filters-bar agenda-filters" role="region" aria-label="Filtres de l’agenda">
+                <div class="filters-row">
+                    <div class="filter-item filter-grow">
+                        <label class="sr-only" for="q">Rechercher</label>
+                        <input id="q" class="filter-input" type="search"
+                            placeholder="Rechercher un événement, un lieu, un organisateur…" autocomplete="off">
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="date-from">Du</label>
+                        <input id="date-from" class="filter-input" type="date">
+                    </div>
+                    <div class="filter-item">
+                        <label class="sr-only" for="date-to">Au</label>
+                        <input id="date-to" class="filter-input" type="date">
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="city">Ville</label>
+                        <select id="city" class="filter-select" aria-label="Filtrer par ville">
+                            <option value="">Toutes villes</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="category">Catégorie</label>
+                        <select id="category" class="filter-select" aria-label="Filtrer par catégorie">
+                            <option value="">Toutes catégories</option>
+                            <option value="salon">Salon</option>
+                            <option value="foire">Foire</option>
+                            <option value="concert">Concert</option>
+                            <option value="animation">Animation de ville</option>
+                            <option value="feu">Feu d’artifice</option>
+                            <option value="commercant">Chez un commerçant</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="organizer">Organisateur</label>
+                        <select id="organizer" class="filter-select" aria-label="Filtrer par organisateur">
+                            <option value="">Tous organisateurs</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="check">
+                            <input id="advantage" type="checkbox">
+                            <span>Avantage « Carte à deux balles »</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-item">
+                        <button id="btn-weekend" class="chip" type="button">Ce week-end</button>
+                        <button id="btn-free" class="chip" type="button">Gratuit</button>
+                    </div>
+
+                    <div class="filter-item">
+                        <button id="btn-reset" class="btn btn-secondary">Réinitialiser</button>
+                    </div>
+                </div>
+
+                <div class="filters-row between">
+                    <div class="filters-stats"><span id="count">0</span> évènement(s)</div>
+                    <div class="view-switch" role="tablist" aria-label="Choisir l’affichage">
+                        <button class="view-btn is-active" data-view="list" role="tab"
+                            aria-selected="true">Liste</button>
+                        <button class="view-btn" data-view="calendar" role="tab"
+                            aria-selected="false">Calendrier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENU -->
+    <main id="agenda" class="section" aria-live="polite">
+        <div class="container">
+            <!-- Vue Liste -->
+            <div id="view-list" class="agenda-grid" data-view="list"></div>
+
+            <!-- Vue Calendrier -->
+            <div id="view-calendar" class="calendar-view is-hidden" data-view="calendar" aria-hidden="true">
+                <div class="calendar-toolbar">
+                    <button id="cal-prev" class="btn btn-secondary" type="button" aria-label="Mois précédent">‹</button>
+                    <h3 id="cal-label" class="cal-label">Mois</h3>
+                    <button id="cal-next" class="btn btn-secondary" type="button" aria-label="Mois suivant">›</button>
+                </div>
+                <div id="calendar-grid" class="calendar-grid" role="grid" aria-labelledby="cal-label"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA COMMERÇANTS -->
+    <section class="section submit-cta">
+        <div class="container center">
+            <h2>Vous organisez un évènement ?</h2>
+            <p>Annoncez-le gratuitement et gagnez en visibilité auprès du public local.</p>
+            <a class="btn btn-primary" href="#proposer">Proposer une actualité</a>
+        </div>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section id="proposer" class="section submit-form" aria-labelledby="submit-title">
+        <div class="container">
+            <h2 id="submit-title">Proposer une actualité</h2>
+            <form id="form-submit" novalidate>
+                <div class="form-grid">
+                    <label> Titre* <input required name="title" type="text" placeholder="Nom de l’évènement"></label>
+                    <label> Organisateur <input name="organizer" type="text"
+                            placeholder="Association, Ville, Commerce…"></label>
+                    <label> Ville* <input required name="city" type="text" placeholder="Tarbes, Bagnères…"></label>
+                    <label> Lieu <input name="venue" type="text" placeholder="Parc des expos, Place du marché…"></label>
+                    <label> Début* <input required name="start" type="datetime-local"></label>
+                    <label> Fin <input name="end" type="datetime-local"></label>
+                    <label> Catégorie*
+                        <select required name="category">
+                            <option value="">Choisir…</option>
+                            <option value="salon">Salon</option>
+                            <option value="foire">Foire</option>
+                            <option value="concert">Concert</option>
+                            <option value="animation">Animation de ville</option>
+                            <option value="feu">Feu d’artifice</option>
+                            <option value="commercant">Chez un commerçant</option>
+                        </select>
+                    </label>
+                    <label> Avantage Carte
+                        <select name="advantage">
+                            <option value="false">Non</option>
+                            <option value="true">Oui</option>
+                        </select>
+                    </label>
+                    <label class="full"> Description
+                        <textarea name="description" rows="5"
+                            placeholder="Quelques lignes pour donner envie…"></textarea>
+                    </label>
+                    <label class="full"> Visuel (URL)
+                        <input name="image" type="url" placeholder="https://…">
+                    </label>
+                    <label> Lien (site/billetterie) <input name="site" type="url" placeholder="https://…"></label>
+                    <label> Facebook <input name="fb" type="url" placeholder="https://facebook.com/…"></label>
+                    <label> Instagram <input name="ig" type="url" placeholder="https://instagram.com/…"></label>
+                    <label> Lien carte <input name="map" type="url" placeholder="https://maps.google.com/…"></label>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-secondary" type="reset">Effacer</button>
+                    <button id="wa-preview" class="btn btn-secondary" type="button">Prévisualiser</button>
+                    <button id="wa-send" class="btn btn-primary" type="button">Envoyer via WhatsApp</button>
+                </div>
+
+                <!-- Aperçu message WhatsApp -->
+                <div id="wa-preview-box" class="wa-preview is-hidden" aria-live="polite"></div>
+
+                <p class="form-note">L’envoi se fait via WhatsApp (message prérempli). Vous pourrez corriger le texte
+                    avant d’envoyer.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- MODAL DÉTAIL -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" type="button" aria-label="Fermer" data-close>×</button>
+            <article id="modal-content" class="event-detail"></article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">Élan Bigourdan</div>
+                <p class="footer-slogan">Avec vous, pour faire vivre l’économie locale</p>
+            </div>
+            <div class="footer-col">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="index.html#mission">Notre mission</a></li>
+                    <li><a href="nos_partenaires.html">Partenaires</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a class="whatsapp-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+                <a href="mailto:elanbigourdan65@gmail.com">elanbigourdan65@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="actualite.js" defer></script>
+</body>
+
+</html>
