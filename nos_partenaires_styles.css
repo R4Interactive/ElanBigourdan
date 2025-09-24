@@ -1,4 +1,6 @@
+/* ============== nos_partenaires_styles.css (clair + GRID + espacement régulier + tags fixes + desc centrée) ============== */
 :root {
+	/* Palette */
 	--primary: #1b5c3b;
 	--secondary: #115e9b;
 	--ink: #27312f;
@@ -6,11 +8,27 @@
 	--sand: #f6f4ec;
 	--bg: #ffffff;
 	--card: #ffffff;
+
+	/* UI */
 	--radius: 14px;
 	--shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+
+	/* Grille globale */
 	--gap: 1rem;
+
+	/* Rythme vertical des cartes */
+	--space-y: 0.95rem;
+	--space-y-sm: 0.6rem;
+
+	/* Badges */
+	--badge-h: 2.4rem; /* hauteur visuelle d’un tag */
+	--badge-rgap: 0.6rem; /* écart vertical entre deux lignes */
+	--badge-rows: 2; /* réserve 2 lignes en desktop */
+
 	color-scheme: light;
 }
+
+/* Accessibilité utilitaire */
 .sr-only {
 	position: absolute !important;
 	width: 1px;
@@ -22,10 +40,19 @@
 	white-space: nowrap;
 	border: 0;
 }
+
+/* Bandeau */
 .partners-hero {
 	background: var(--sand);
 	padding: 2.2rem 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.partners-hero .container {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 .partners-hero .eyebrow {
 	letter-spacing: 0.08em;
@@ -33,24 +60,6 @@
 	color: var(--primary);
 	margin: 0 0 0.35rem;
 }
-/* Centrer le contenu du header partenaires */
-.partners-hero .container {
-	text-align: center; /* centre le texte */
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-/* Centrer le contenu de la section "Devenir partenaire" */
-#devenir-partenaire .container {
-	text-align: center; /* centre le texte */
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
 .partners-hero h1 {
 	margin: 0.1rem 0 0.6rem;
 	font-size: 2rem;
@@ -62,6 +71,8 @@
 .partners-hero .hero-actions {
 	margin-top: 1rem;
 }
+
+/* Filtres */
 .filters-bar {
 	display: flex;
 	flex-direction: column;
@@ -126,6 +137,8 @@
 	color: var(--muted);
 	font-weight: 700;
 }
+
+/* Grille des cartes */
 .pc-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -142,26 +155,31 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+/* =========================
+   Carte partenaire (GRID)
+   ========================= */
 .pc-card {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: auto auto minmax(0, auto) 1fr auto; /* header / meta / badges / desc / cta */
+	row-gap: var(--space-y);
+
 	background: var(--card);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	padding: 1.1rem 1.2rem;
 	border: 1px solid rgba(0, 0, 0, 0.06);
+	padding: 1.15rem 1.25rem;
 	min-height: 260px;
 }
-.pc-card > * + * {
-	margin-top: 0.75rem;
-}
-.pc-header {
+
+/* 1) Header (logo + titre) */
+.pc-card .pc-header {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 0.8rem;
 	min-height: 56px;
 }
-.pc-logo {
+.pc-card .pc-logo {
 	flex: 0 0 56px;
 	height: 56px;
 	border-radius: 12px;
@@ -171,89 +189,117 @@
 	justify-content: center;
 	overflow: hidden;
 }
-.pc-logo img {
+.pc-card .pc-logo img {
 	max-width: 90%;
 	max-height: 90%;
 	object-fit: contain;
 	display: block;
 }
-.pc-title {
-	font-size: 1.05rem;
+.pc-card .pc-title {
+	margin: 0;
+	font-size: 1.06rem;
 	line-height: 1.35;
 	font-weight: 800;
 	color: var(--primary);
 	overflow: hidden;
 	max-height: calc(1.35em * 2);
-	margin: 0;
 }
-.pc-meta {
+
+/* 2) Meta (ville + catégorie sur une seule ligne, entiers) */
+.pc-card .pc-meta {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 0.6rem;
+
+	flex-wrap: nowrap; /* une seule ligne */
+	white-space: nowrap; /* pas de retour */
+	overflow: visible; /* pas de masquage */
+	text-overflow: clip; /* pas de "..." */
+
+	margin: 0;
+	padding-bottom: var(--space-y-sm);
+	line-height: 1.45;
+	color: var(--muted);
+	font-size: clamp(0.88rem, 0.9rem + 0.1vw, 0.96rem);
+}
+.pc-card .pc-meta-item,
+.pc-card .pc-meta-item--grow,
+.pc-card .pc-meta .pc-dot {
 	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	overflow: visible;
+	text-overflow: clip;
+	flex: 0 0 auto;
+	min-width: max-content; /* prend la place nécessaire */
 }
-.pc-meta-item {
-	white-space: nowrap;
-}
-.pc-meta-item--grow {
-	flex: 1 1 auto;
-	min-width: 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.pc-dot {
+.pc-card .pc-dot {
 	opacity: 0.6;
 }
-.pc-desc {
-	margin-top: 0.5rem; /* espace entre les badges et la description */
-	color: var(--ink);
-	opacity: 0.95;
-	line-height: 1.5;
-	overflow: hidden;
-	max-height: calc(1.5em * 3);
-}
-.pc-badges {
+
+/* 3) Badges (wrap, réserve fixe, non rognés) */
+.pc-card .pc-badges {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.4rem;
-	margin-top: 0.5rem; /* espace au-dessus */
-	margin-bottom: 0.5rem; /* espace en dessous */
+	column-gap: 0.5rem;
+	row-gap: var(--badge-rgap);
+	margin: 0;
+	padding: 0.6rem 0;
+	align-content: flex-start;
+	overflow: visible;
+
+	min-height: calc(
+		var(--badge-rows) * var(--badge-h) + (var(--badge-rows) - 1) *
+			var(--badge-rgap)
+	);
 }
-.pc-badge {
+.pc-card .pc-badge {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
-	padding: 0.28rem 0.55rem;
+	padding: 0.35rem 0.7rem;
 	border-radius: 999px;
-	font-size: 0.85rem;
+	font-size: 0.88rem;
 	font-weight: 700;
-	line-height: 1;
+	line-height: 1.2;
 	background: #eef2ef;
 	color: #163a28;
 	border: 1px solid rgba(0, 0, 0, 0.05);
+	white-space: nowrap;
+	flex: 0 0 auto;
 }
-.pc-badge--deal {
+.pc-card .pc-badge--deal {
 	background: #e6f5eb;
 	color: #0f5f3a;
 	border-color: #cfeedd;
 }
-.pc-badge--deal::before {
+.pc-card .pc-badge--deal::before {
 	content: '★';
 	font-size: 0.9rem;
 	line-height: 1;
 }
-.pc-cta {
+
+/* 4) Description (centrée) */
+.pc-card .pc-desc {
+	margin: 0;
+	padding-top: var(--space-y-sm);
+	color: var(--ink);
+	opacity: 0.95;
+	line-height: 1.6;
+	overflow: hidden;
+	max-height: calc(1.6em * 3);
+	text-align: center; /* centrage horizontal */
+}
+
+/* 5) CTA */
+.pc-card .pc-cta {
 	margin-top: auto;
 	display: flex;
 	align-items: center;
-	gap: 0.6rem;
+	gap: 0.65rem;
 	flex-wrap: wrap;
 }
-.pc-btn {
+.pc-card .pc-btn {
 	display: inline-block;
-	padding: 0.6rem 0.9rem;
+	padding: 0.6rem 0.95rem;
 	border-radius: 999px;
 	background: var(--primary);
 	color: #fff;
@@ -262,15 +308,15 @@
 	border: 2px solid transparent;
 	transition: transform 0.06s ease, box-shadow 0.2s ease;
 }
-.pc-btn:hover {
+.pc-card .pc-btn:hover {
 	transform: translateY(-1px);
 	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
-.pc-btn:focus-visible {
+.pc-card .pc-btn:focus-visible {
 	outline: 3px solid var(--secondary);
 	outline-offset: 2px;
 }
-.pc-icon {
+.pc-card .pc-icon {
 	width: 40px;
 	height: 40px;
 	border-radius: 999px;
@@ -282,24 +328,56 @@
 	border: 1px solid rgba(0, 0, 0, 0.06);
 	font-weight: 800;
 }
-.pc-icon:hover {
+.pc-card .pc-icon:hover {
 	filter: brightness(0.98);
 	transform: translateY(-1px);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
 }
-.pc-icon--fb::before {
+.pc-card .pc-icon--fb::before {
 	content: 'f';
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-.pc-icon--ig::before {
+.pc-card .pc-icon--ig::before {
 	content: 'ig';
 	font-size: 0.8rem;
 }
-.pc-icon--map::before {
+.pc-card .pc-icon--map::before {
 	content: 'map';
 	font-size: 0.8rem;
 }
+
+/* CTA sous la grille */
 .new-partner-cta {
 	text-align: center;
 	margin-top: 1rem;
+}
+
+/* Section "Devenir partenaire" centrée */
+#devenir-partenaire {
+	padding: 4rem 1rem; /* plus d'air en haut et en bas */
+}
+
+#devenir-partenaire .container {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 3rem; /* espace uniforme entre les éléments */
+}
+
+#devenir-partenaire h2 {
+	margin-bottom: 0.5rem; /* réduit la marge basse par défaut */
+	font-size: 2rem;
+}
+
+#devenir-partenaire p {
+	margin: 0; /* reset pour éviter l’empilement de marges */
+}
+
+/* Mobile : réserve 1 ligne de tags */
+@media (max-width: 680px) {
+	:root {
+		--badge-rows: 1;
+	}
 }
