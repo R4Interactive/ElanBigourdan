@@ -65,9 +65,9 @@ const EVENTS = [
 	},
 ];
 
-/* ========= WhatsApp ========= */
-// Numéro WhatsApp (format international, sans +)
-const WHATSAPP_NUMBER = '33600000000';
+/* ========= Config WhatsApp & e-mail ========= */
+const WHATSAPP_NUMBER = '33600000000'; // Format international, sans +
+const EMAIL_TO = 'elanbigourdan65@gmail.com'; // Adresse de réception e-mail
 
 /* ========= Helpers & State ========= */
 const $ = (s) => document.querySelector(s);
@@ -127,7 +127,7 @@ function escapeICS(s) {
 	return (s || '').replace(/([,;])/g, '\\$1').replace(/\n/g, '\\n');
 }
 
-/* ========= WhatsApp utils ========= */
+/* ========= WhatsApp / e-mail utils ========= */
 function buildWhatsAppMessage(data) {
 	const toLine = (v) => (v && String(v).trim() ? String(v).trim() : '—');
 	const start = data.start ? new Date(data.start) : null;
@@ -176,6 +176,13 @@ function openWhatsAppWithMessage(msg) {
 		msg
 	)}`;
 	window.open(url, '_blank', 'noopener');
+}
+function openEmailWithMessage(msg) {
+	const subject = 'Proposition d’actualité – Élan Bigourdan';
+	const url = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(
+		subject
+	)}&body=${encodeURIComponent(msg)}`;
+	window.location.href = url;
 }
 function readForm() {
 	return Object.fromEntries(
@@ -254,10 +261,7 @@ function initFilters() {
 		btn.addEventListener('click', () => setView(btn.dataset.view))
 	);
 
-	readURLParams();
-	reflectFilters();
-
-	// WhatsApp
+	// WhatsApp / e-mail
 	$('#wa-preview')?.addEventListener('click', () => {
 		const data = readForm();
 		if (!data.title || !data.city || !data.start || !data.category) {
@@ -272,6 +276,34 @@ function initFilters() {
 		box.classList.remove('is-hidden');
 		box.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	});
+
+	$('#wa-copy')?.addEventListener('click', async () => {
+		const data = readForm();
+		if (!data.title || !data.city || !data.start || !data.category) {
+			alert(
+				'Merci de renseigner au minimum : Titre, Ville, Début et Catégorie.'
+			);
+			return;
+		}
+		const msg = buildWhatsAppMessage(data);
+		try {
+			await navigator.clipboard.writeText(msg);
+			alert(
+				'Message copié ! Vous pouvez le coller dans WhatsApp, email, SMS, etc.'
+			);
+			const box = $('#wa-preview-box');
+			box.textContent = msg;
+			box.classList.remove('is-hidden');
+		} catch {
+			const box = $('#wa-preview-box');
+			box.textContent = msg;
+			box.classList.remove('is-hidden');
+			alert(
+				'Impossible de copier automatiquement. Le message est affiché ci-dessous : sélectionnez-le et copiez-le.'
+			);
+		}
+	});
+
 	$('#wa-send')?.addEventListener('click', () => {
 		const data = readForm();
 		if (!data.title || !data.city || !data.start || !data.category) {
@@ -282,6 +314,21 @@ function initFilters() {
 		}
 		openWhatsAppWithMessage(buildWhatsAppMessage(data));
 	});
+
+	$('#email-send')?.addEventListener('click', () => {
+		const data = readForm();
+		if (!data.title || !data.city || !data.start || !data.category) {
+			alert(
+				'Merci de renseigner au minimum : Titre, Ville, Début et Catégorie.'
+			);
+			return;
+		}
+		openEmailWithMessage(buildWhatsAppMessage(data));
+	});
+
+	// état initial URL
+	readURLParams();
+	reflectFilters();
 }
 function toggleChip(sel, active) {
 	const el = $(sel);

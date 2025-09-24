@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lives — Élan Bigourdan</title>
+    <meta name="description"
+        content="Retrouvez les lives des commerçants du département, classés par ville et catégories, avec recherche." />
+
+    <!-- Police -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles globaux -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Styles page Lives -->
+    <link rel="stylesheet" href="live_styles.css">
+</head>
+
+<body>
+
+    <!-- NAV (style commun du site) -->
+    <nav class="navbar" aria-label="Navigation principale">
+        <div class="container nav-wrap">
+            <a class="logo" href="index.html">Élan Bigourdan</a>
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="primary-menu" class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="actualite.html">Actualités</a></li>
+                <li><a href="live.html" aria-current="page">Nos lives</a></li>
+                <li><a href="nos_partenaires.html">Nos partenaires</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="live-hero" role="banner">
+        <div class="container">
+            <p class="eyebrow">DIRECT & REPLAYS</p>
+            <h1>Lives des commerçants</h1>
+            <p class="lead">Regardez les replays et découvrez les nouveautés, promos et événements près de chez vous.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#lives">Voir les lives</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FILTRES -->
+    <section class="section" aria-labelledby="filters-title">
+        <div class="container">
+            <h2 id="filters-title" class="sr-only">Filtres et recherche des lives</h2>
+
+            <div class="filters-bar live-filters" role="region" aria-label="Filtres des lives">
+                <div class="filters-row">
+                    <div class="filter-item filter-grow">
+                        <label for="q" class="sr-only">Rechercher</label>
+                        <input id="q" class="filter-input" type="search"
+                            placeholder="Rechercher un commerçant, un titre, une promo…" autocomplete="off">
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="city">Ville</label>
+                        <select id="city" class="filter-select" aria-label="Filtrer par ville">
+                            <option value="">Toutes villes</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="sr-only" for="category">Catégorie</label>
+                        <select id="category" class="filter-select" aria-label="Filtrer par catégorie">
+                            <option value="">Toutes catégories</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <button id="btn-reset" class="btn btn-secondary" type="button">Réinitialiser</button>
+                    </div>
+                </div>
+
+                <div class="filters-row between">
+                    <div class="filters-stats"><span id="count">0</span> live(s)</div>
+                    <div class="view-hint">Ajout manuel depuis Facebook (pas d’API)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LISTE -->
+    <main id="lives" class="section" aria-live="polite">
+        <div class="container">
+            <div id="live-grid" class="live-grid"></div>
+
+            <div class="center">
+                <button id="btn-more" class="btn btn-secondary" type="button" hidden>Voir plus</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODALE DÉTAIL (optionnelle pour description longue) -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-dialog" role="document">
+            <button class="modal-close" type="button" aria-label="Fermer" data-close>×</button>
+            <article id="modal-content" class="live-detail"></article>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">Élan Bigourdan</div>
+                <p class="footer-slogan">Avec vous, pour faire vivre l’économie locale</p>
+            </div>
+            <div class="footer-col">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="index.html#mission">Notre mission</a></li>
+                    <li><a href="nos_partenaires.html">Partenaires</a></li>
+                    <li><a href="actualite.html">Agenda</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <a class="whatsapp-link" href="https://wa.me/33600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+                <a href="mailto:elanbigourdan65@gmail.com">elanbigourdan65@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="live.js" defer></script>
+</body>
+
+</html>
